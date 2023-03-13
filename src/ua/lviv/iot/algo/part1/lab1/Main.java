@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@ToString
 
 class Trolleybus{
     private int id = 100;
@@ -22,19 +25,14 @@ class Trolleybus{
     public static Trolleybus getInstance(){
 return instance;
     }
-    public String toString(){
-        return "id: " + id + " routeNumber: " + routeNumber
-                + " currentStop: " + currentStop + " km/h " + " maxSpeed: "
-                + maxSpeed + " km/h " + " capacity: " + capacity
-                + " passengers: " + passengers;
-    }
+
+
 public void stop(){
          currentSpeed = 0;
 }
 public void start(){
-        if(maxSpeed>=20) {
-            currentSpeed = 20;
-        }
+     final int startSpeed = 20;
+            currentSpeed = startSpeed;
 }
 public void addPassenger(){
  if(passengers<capacity){
