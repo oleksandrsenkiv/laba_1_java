@@ -1,25 +1,22 @@
 package ua.lviv.iot.algo.part1.lab1;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class CandleTest {
+    private Candle candle = new Candle();
+
     @Test
-    public void turnOnTest(){
-        Candle candle1 = new Candle();
-        Candle candle2 = new Candle();
-        candle1.setBurning(true);
-        candle2.turnOn();
-        assertEquals(candle1.toString(),candle2.toString());
+    public void turnOnTest() {
+        candle.turnOn();
+        assertTrue(candle.getIsBurning() == true);
     }
+
     @Test
-    public void turnOffTest(){
-        Candle candle1 = new Candle();
-        Candle candle2 = new Candle();
-        candle1.setBurning(false);
-        candle2.turnOff();
-        assertEquals(candle1.toString(),candle2.toString());
+    public void turnOffTest() {
+        candle.turnOff();
+        assertTrue(candle.getIsBurning() == false);
     }
 
 }

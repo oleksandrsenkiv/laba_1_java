@@ -1,25 +1,22 @@
 package ua.lviv.iot.algo.part1.lab1;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-public class FlashlightTest  {
+import static org.junit.Assert.assertTrue;
+
+public class FlashlightTest {
+    private Flashlight flashlight = new Flashlight();
+
     @Test
-    public void turnOnTest(){
-        Flashlight flashlight1 = new Flashlight();
-        Flashlight flashlight2 = new Flashlight();
-        flashlight1.setOn(true);
-        flashlight2.turnOn();
-        assertEquals(flashlight1.toString(),flashlight2.toString());
+    public void turnOnTest() {
+        flashlight.turnOn();
+        assertTrue(flashlight.getIsOn() == true);
     }
+
     @Test
-    public void turnOffTest(){
-        Flashlight flashlight1 = new Flashlight();
-        Flashlight flashlight2 = new Flashlight();
-        flashlight1.setOn(false);
-        flashlight2.turnOff();
-        assertEquals(flashlight1.toString(),flashlight2.toString());
+    public void turnOffTest() {
+        flashlight.turnOff();
+        assertTrue(flashlight.getIsOn() == false);
     }
 
 }

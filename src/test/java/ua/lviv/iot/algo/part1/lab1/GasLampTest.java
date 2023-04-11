@@ -1,24 +1,22 @@
 package ua.lviv.iot.algo.part1.lab1;
 
-
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.assertTrue;
+
 public class GasLampTest {
+    GasLamp gasLamp = new GasLamp();
+
     @Test
-    public void turnOffTest(){
-        GasLamp gasLamp1 = new GasLamp();
-        GasLamp gasLamp2 = new GasLamp();
-        gasLamp1.setBurning(false);
-        gasLamp2.turnOff();
-        assertEquals(gasLamp1.toString(),gasLamp2.toString());
+    public void turnOffTest() {
+        gasLamp.turnOff();
+        assertTrue(gasLamp.getIsBurning() == false);
     }
+
     @Test
-    public void turnOnTest(){
-        GasLamp gasLamp1 = new GasLamp();
-        GasLamp gasLamp2 = new GasLamp();
-        gasLamp1.setBurning(true);
-        gasLamp2.turnOn();
-        assertEquals(gasLamp1.toString(),gasLamp2.toString());
+    public void turnOnTest() {
+        gasLamp.turnOn();
+        assertTrue(gasLamp.getIsBurning() == true);
     }
 
 }

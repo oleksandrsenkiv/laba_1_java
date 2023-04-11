@@ -1,4 +1,5 @@
 package ua.lviv.iot.algo.part1.lab1;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,22 +10,29 @@ import lombok.ToString;
 
 @Getter
 @ToString(callSuper = true)
-public class Flashlight extends Light{
+public final class Flashlight extends Light {
     private boolean isOn = false;
     private int illuminationRangeInMeters;
-    public Flashlight(int workTimeInHours,int heightInMm, String producer, boolean isOn, int illuminationRangeInMeters){
-        super(producer,workTimeInHours,heightInMm);
+
+    public Flashlight(int workTimeInHours, int heightInMm, String producer,
+                      boolean isOn, int illuminationRangeInMeters) {
+        super(producer, workTimeInHours, heightInMm);
         this.isOn = isOn;
         this.illuminationRangeInMeters = illuminationRangeInMeters;
         this.workTimeInHours = workTimeInHours;
     }
 
     @Override
-    public void turnOn(){
+    public void turnOn() {
         isOn = true;
     }
+
     @Override
-    public void turnOff(){
+    public void turnOff() {
         isOn = false;
+    }
+
+    public boolean getIsOn() {
+        return isOn;
     }
 }
