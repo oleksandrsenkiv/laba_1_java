@@ -5,15 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @ToString
+@Setter
 public abstract class Light {
-    String producer = "Unknown";
-    int workTimeInHours;
-    int heightInMm;
-    public void turnOn(){}
-    public void turnOff(){}
+   protected String producer;
+   protected int workTimeInHours;
+   protected int heightInMm;
+   protected abstract void turnOn();
+   protected abstract void turnOff();
 }
