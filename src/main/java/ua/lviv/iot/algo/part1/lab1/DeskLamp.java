@@ -9,14 +9,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString(callSuper = true)
-public final class DeskLamp extends Light {
+public class DeskLamp extends Light {
     private boolean isOn = false;
     private final int defaultBrightness = 5;
     private int brightness = defaultBrightness;
     private String color = "White";
     private final int maxBrightness = 10;
+    public static final String HEADERS = "isOn,brightness,color";
 
-    public DeskLamp(int heightInMm, int workTimeInHours, String producer,
+    public DeskLamp( String producer, int heightInMm, int workTimeInHours,
                     boolean isOn, int brightness, String color) {
         super(producer, workTimeInHours, heightInMm);
         this.isOn = isOn;
@@ -43,4 +44,11 @@ public final class DeskLamp extends Light {
     public boolean getIsOn() {
         return isOn;
     }
-}
+
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getIsOn() + "," + getBrightness() + "," + getColor();}
+    }

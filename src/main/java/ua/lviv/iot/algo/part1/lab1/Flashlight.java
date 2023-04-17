@@ -10,11 +10,11 @@ import lombok.ToString;
 
 @Getter
 @ToString(callSuper = true)
-public final class Flashlight extends Light {
+public class Flashlight extends Light {
     private boolean isOn = false;
     private int illuminationRangeInMeters;
-
-    public Flashlight(int workTimeInHours, int heightInMm, String producer,
+public static final String HEADERS = "isOn,illuminationRangeInMeters";
+    public Flashlight(String producer,int workTimeInHours, int heightInMm,
                       boolean isOn, int illuminationRangeInMeters) {
         super(producer, workTimeInHours, heightInMm);
         this.isOn = isOn;
@@ -34,5 +34,13 @@ public final class Flashlight extends Light {
 
     public boolean getIsOn() {
         return isOn;
+    }
+
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getIsOn() + "," + getIlluminationRangeInMeters();
     }
 }

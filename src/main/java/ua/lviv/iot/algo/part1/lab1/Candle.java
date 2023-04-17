@@ -9,9 +9,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString(callSuper = true)
-public final class Candle extends Light {
+public class Candle extends Light {
     private boolean isBurning = false;
     private String form;
+    public static final String HEADERS = "isBurning,form";
 
     public Candle(int heightInMm, int workTimeInHours, String producer,
                   boolean isBurning, String form) {
@@ -34,5 +35,13 @@ public final class Candle extends Light {
 
     public boolean getIsBurning() {
         return isBurning;
+    }
+
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getIsBurning() + "," + getForm();
     }
 }

@@ -9,9 +9,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-public final class GasLamp extends Light {
+public class GasLamp extends Light {
     private boolean isBurning = false;
     private int gasConsumption;
+    public static final String HEADERS = "isBurning,gasConsumption";
 
     public GasLamp(int heightInMm, int workTimeInHours, String producer,
                    boolean isBurning, int gasConsumption) {
@@ -32,5 +33,13 @@ public final class GasLamp extends Light {
 
     public boolean getIsBurning() {
         return isBurning;
+    }
+
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getIsBurning() + "," + getGasConsumption();
     }
 }
