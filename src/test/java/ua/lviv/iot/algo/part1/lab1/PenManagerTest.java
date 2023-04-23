@@ -2,6 +2,9 @@ package ua.lviv.iot.algo.part1.lab1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.algo.part1.lab1.model.Candle;
+import ua.lviv.iot.algo.part1.lab1.model.DeskLamp;
+import ua.lviv.iot.algo.part1.lab1.model.Light;
 
 import java.util.ArrayList;
 

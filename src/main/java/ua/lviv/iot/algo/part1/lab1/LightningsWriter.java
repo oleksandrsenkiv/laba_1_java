@@ -1,49 +1,55 @@
 package ua.lviv.iot.algo.part1.lab1;
 
-import java.io.File;
-import java.io.FileWriter;
+import ua.lviv.iot.algo.part1.lab1.model.Light;
+
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 import java.util.Comparator;
 
-public class LightningsWriter {
+public final class LightningsWriter {
 
-
-
-    public String writeToFile(List<Light> lightnings, String fileName) {
+    public String writeToFile(final List<Light> lightnings,
+                              final String fileName) {
         if (lightnings == null || lightnings.isEmpty()) {
             return null;
         }
-        try (FileWriter writer = new FileWriter(fileName)) {
+        try (Writer writer = new PrintWriter(fileName, StandardCharsets.UTF_8)) {
             Collections.sort(lightnings, new ClassComparator());
             Light previousLightning = null;
+
             for (Light lightning : lightnings) {
+
                 if (previousLightning == null) {
-                    writer.write(lightning.getHeaders());
-                    writer.write("\r\n");
+                    writer.write(lightning.getHeaders() + "\n");
                     previousLightning = lightning;
-                } else {
-                    if (previousLightning.getClass().getSimpleName() != lightning.getClass().getSimpleName()) {
-                        writer.write(lightning.getHeaders());
-                        writer.write("\r\n");
-                        previousLightning = lightning;
-                    }
+
+                } else if (previousLightning.getClass() != lightning.getClass()) {
+                    writer.write("\n" + lightning.getHeaders() + "\n");
+                    previousLightning = lightning;
+
                 }
-                writer.write(lightning.toCSV());
-                writer.write("\r\n");
+                writer.write(lightning.toCSV() + "\n");
             }
+
         } catch (IOException e) {
             e.fillInStackTrace();
-        }
 
+        }
         return fileName;
     }
 
-    class ClassComparator implements Comparator<Light> {
+    static class ClassComparator implements Comparator<Light>, Serializable {
         @Override
-        public int compare(Light light1, Light light2) {
-            return light1.getClass().getSimpleName().compareTo(light2.getClass().getSimpleName());
+        public int compare(final Light light1, final Light light2) {
+            return light1.getClass()
+                          .getSimpleName()
+                          .compareTo(light2.getClass().getSimpleName());
+
         }
 
     }

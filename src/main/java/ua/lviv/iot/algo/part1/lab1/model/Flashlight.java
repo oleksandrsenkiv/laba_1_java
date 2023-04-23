@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab1.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +10,15 @@ import lombok.ToString;
 
 @Getter
 @ToString(callSuper = true)
-public class Flashlight extends Light {
+public final class Flashlight extends Light {
     private boolean isOn = false;
     private int illuminationRangeInMeters;
-public static final String HEADERS = "isOn,illuminationRangeInMeters";
-    public Flashlight(String producer,int workTimeInHours, int heightInMm,
-                      boolean isOn, int illuminationRangeInMeters) {
+    public static final String HEADERS = "isOn,illuminationRangeInMeters";
+
+    public Flashlight(final String producer, final int workTimeInHours,
+                      final int heightInMm,
+                      final boolean isOn,
+                      final int illuminationRangeInMeters) {
         super(producer, workTimeInHours, heightInMm);
         this.isOn = isOn;
         this.illuminationRangeInMeters = illuminationRangeInMeters;
@@ -41,6 +44,7 @@ public static final String HEADERS = "isOn,illuminationRangeInMeters";
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + getIsOn() + "," + getIlluminationRangeInMeters();
+        return super.toCSV() + "," + getIsOn() + ","
+                + getIlluminationRangeInMeters();
     }
 }

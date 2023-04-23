@@ -1,12 +1,15 @@
 producer,workTimeInHours,heightInMm,isBurning,form
 Sinsay,12,100,true,Round
 Yusk,50,200,true,Square
+
 producer,workTimeInHours,heightInMm,isOn,brightness,color
 Accento lightning,300,20,false,6,Yellow
 Brilloner,280,24,true,2,Blue
+
 producer,workTimeInHours,heightInMm,isOn,illuminationRangeInMeters
 Xiaomi,150,110,true,25
 RZTK,10,250,false,100
+
 producer,workTimeInHours,heightInMm,isBurning,gasConsumption
 Kovea,15,300,true,2
 WALKING,12,215,false,1

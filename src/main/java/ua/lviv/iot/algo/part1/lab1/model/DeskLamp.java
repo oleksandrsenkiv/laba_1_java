@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab1.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,16 +9,19 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString(callSuper = true)
-public class DeskLamp extends Light {
+public final class DeskLamp extends Light {
     private boolean isOn = false;
-    private final int defaultBrightness = 5;
-    private int brightness = defaultBrightness;
+    private static final int DEFAULT_BRIGHTNESS = 5;
+    private int brightness = DEFAULT_BRIGHTNESS;
     private String color = "White";
-    private final int maxBrightness = 10;
+    private static final int MAX_BRIGHTNESS = 10;
     public static final String HEADERS = "isOn,brightness,color";
 
-    public DeskLamp( String producer, int heightInMm, int workTimeInHours,
-                    boolean isOn, int brightness, String color) {
+    public DeskLamp(final String producer, final int heightInMm,
+                    final int workTimeInHours,
+                    final boolean isOn,
+                    final int brightness,
+                    final String color) {
         super(producer, workTimeInHours, heightInMm);
         this.isOn = isOn;
         this.color = color;
@@ -35,8 +38,8 @@ public class DeskLamp extends Light {
         isOn = false;
     }
 
-    public void setBrightness(int brightness) {
-        if (brightness <= maxBrightness) {
+    public void setBrightness(final int brightness) {
+        if (brightness <= MAX_BRIGHTNESS) {
             this.brightness = brightness;
         }
     }
@@ -50,5 +53,7 @@ public class DeskLamp extends Light {
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + getIsOn() + "," + getBrightness() + "," + getColor();}
+        return super.toCSV() + "," + getIsOn() + ","
+                + getBrightness() + "," + getColor();
     }
+}

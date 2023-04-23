@@ -2,6 +2,7 @@ package ua.lviv.iot.algo.part1.lab1;
 
 
 import org.junit.jupiter.api.*;
+import ua.lviv.iot.algo.part1.lab1.model.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,7 +12,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LightningsWriterTest {
+ public class LightningsWriterTest {
 
 
     private List<Light> lightnings;
@@ -49,6 +50,7 @@ public class LightningsWriterTest {
         Path expected = new File(RESULT_FILENAME).toPath();
         Path actual = new File(EXPECTED_FILENAME).toPath();
         Assertions.assertEquals(-1L, Files.mismatch(expected, actual));
+
     }
 
     @Test

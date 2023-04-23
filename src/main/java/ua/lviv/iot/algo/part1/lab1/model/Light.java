@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public abstract class Light {
     protected String producer;
     protected int workTimeInHours;
     protected int heightInMm;
-public static final String HEADERS = "producer,workTimeInHours,heightInMm";
+    public static final String HEADERS = "producer,workTimeInHours,heightInMm";
 
     protected abstract void turnOn();
 
@@ -26,6 +26,7 @@ public static final String HEADERS = "producer,workTimeInHours,heightInMm";
     }
 
     public String toCSV() {
-        return getProducer() + "," + getWorkTimeInHours() + "," + getHeightInMm();
+        return getProducer() + ","
+                + getWorkTimeInHours() + "," + getHeightInMm();
     }
 }
