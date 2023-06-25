@@ -2,6 +2,9 @@ package ua.lviv.iot.algo.part1.lab1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.algo.part1.lab1.model.Candle;
+import ua.lviv.iot.algo.part1.lab1.model.DeskLamp;
+import ua.lviv.iot.algo.part1.lab1.model.Light;
 
 import java.util.ArrayList;
 
@@ -17,8 +20,8 @@ public class PenManagerTest {
     public void setUp() {
         penManager1 = new PenManager();
         List<Light> lightnings = new ArrayList<>();
-        lightnings.add(new DeskLamp(300, 20, "Accento lightning", false, 6, "Yellow"));
-        lightnings.add(new DeskLamp(280, 24, "Brilloner", true, 2, "Blue"));
+        lightnings.add(new DeskLamp("Accento lightning", 20, 300, false, 6, "Yellow"));
+        lightnings.add(new DeskLamp("Brilloner", 24, 280, true, 2, "Blue"));
         lightnings.add(new Candle(100, 12, "Sinsay", true, "Round"));
         lightnings.add(new Candle(200, 50, "Yusk", true, "Square"));
         penManager1.setLightnings(lightnings);
@@ -26,7 +29,7 @@ public class PenManagerTest {
 
     @Test
     public void addLightningTest() {
-        penManager1.addLighting(new DeskLamp(300, 20, "Accento lightning", false, 6, "Yellow"));
+        penManager1.addLighting(new DeskLamp("Accento lightning", 20, 300, false, 6, "Yellow"));
         assertEquals(5, penManager1.getLightnings().size());
     }
 

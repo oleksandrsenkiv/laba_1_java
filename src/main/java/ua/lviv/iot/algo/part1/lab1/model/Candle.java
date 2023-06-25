@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab1.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +12,12 @@ import lombok.ToString;
 public final class Candle extends Light {
     private boolean isBurning = false;
     private String form;
+    public static final String HEADERS = "isBurning,form";
 
-    public Candle(int heightInMm, int workTimeInHours, String producer,
-                  boolean isBurning, String form) {
+    public Candle(final int heightInMm, final int workTimeInHours,
+                  final String producer,
+                  final boolean isBurning,
+                  final String form) {
         super(producer, workTimeInHours, heightInMm);
         this.isBurning = isBurning;
         this.heightInMm = heightInMm;
@@ -34,5 +37,13 @@ public final class Candle extends Light {
 
     public boolean getIsBurning() {
         return isBurning;
+    }
+
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getIsBurning() + "," + getForm();
     }
 }
